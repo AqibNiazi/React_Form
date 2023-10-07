@@ -1,19 +1,23 @@
 import React from "react";
 import Button from "./Button";
 import styles from "./ErrorModel.module.css";
-const ErrorModel = ({ title, messages }) => {
+import Card from "./Card";
+const ErrorModel = ({ title, message, onConfirm }) => {
   return (
-    <Card className={styles?.model}>
-      <header className={styles?.header}>
-        <h2>{title}</h2>
-      </header>
-      <div className={styles?.content}>
-        <p>{messages}</p>
-      </div>
-      <footer className={styles.actions}>
-        <Button>Okay</Button>
-      </footer>
-    </Card>
+    <div>
+      <div className={styles?.backdrop} onClick={onConfirm} />
+      <Card className={styles?.modal}>
+        <header className={styles?.header}>
+          <h2>{title}</h2>
+        </header>
+        <div className={styles?.content}>
+          <p>{message}</p>
+        </div>
+        <footer className={styles?.actions}>
+          <Button onClick={onConfirm}>Okay</Button>
+        </footer>
+      </Card>
+    </div>
   );
 };
 
